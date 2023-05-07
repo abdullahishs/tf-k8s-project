@@ -3,9 +3,8 @@ resource "kubernetes_service" "web-service" {
     name = "web-service"
   }
   spec {
-    session_affinity = "ClientIP"
     port {
-      port     = 8080
+      port        = 8080
       node_port = 30080
     }
 

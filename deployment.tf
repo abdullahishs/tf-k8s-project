@@ -4,33 +4,34 @@ resource "kubernetes_deployment" "ft-deploy" {
     labels = {
       name = "ft-deploy"
     }
+
   }
 
   spec {
-    replicas = 5
-
+    replicas = 1
     selector {
       match_labels = {
-        name = "web1"
+        name = "ft-deploy"
       }
     }
+
 
     template {
       metadata {
         labels = {
-          name = "webapp"
+          name = "ft-deploy"
         }
       }
-
 
       spec {
         container {
           image = "nginx"
           name  = "webapp-1"
-
           port {
             container_port = 8080
           }
+
+
         }
       }
     }
